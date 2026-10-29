@@ -1,0 +1,165 @@
+<!-- AUTH SCREEN -->
+<main id="auth" class="auth" hidden>
+  <div class="auth-left">
+    <img src="/assets/background.png" alt="" class="auth-bg">
+    <div class="auth-left-inner">
+      <div class="auth-mark">
+        <span class="auth-mark-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h12a2 2 0 012 2v2"/><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2v-6a2 2 0 00-2-2H5"/><circle cx="16.5" cy="14" r="1.2"/></svg>
+        </span>
+        <span class="auth-mark-name">Spend Wise</span>
+      </div>
+      <div class="auth-hero">
+        <h2>Know where every rupee goes.</h2>
+        <p>Track your spending, stay inside your budget and see what next month is likely to cost, all in one place.</p>
+      </div>
+      <ul class="auth-points">
+        <li><span class="auth-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div><b>Budgets that keep up</b><small>Set a plan for each category and see what is left</small></div></li>
+        <li><span class="auth-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div><b>Next-month forecast</b><small>Learned from your last six months of spending</small></div></li>
+        <li><span class="auth-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div><b>Card due-date reminders</b><small>Only the last four digits are ever stored</small></div></li>
+      </ul>
+    </div>
+  </div>
+  <div class="auth-right">
+    <section class="auth-card">
+      <div class="auth-card-header">
+        <img src="/assets/logo.png" alt="Spend Wise" class="auth-card-logo">
+        <h1 class="auth-title" id="authTitle">Welcome back</h1>
+        <p class="auth-sub" id="authSub">Sign in to your Spend Wise account</p>
+      </div>
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab on" data-action="auth-tab" data-tab="login" role="tab">Sign in</button>
+        <button type="button" class="tab" data-action="auth-tab" data-tab="register" role="tab">Create account</button>
+      </div>
+
+      <form id="loginForm" class="stack">
+        <label class="f">
+          <span>Email address</span>
+          <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        </label>
+        <label class="f">
+          <span>Password</span>
+          <input name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+        </label>
+        <p class="err" id="loginErr" role="alert"></p>
+        <button class="btn btn-full" type="submit">Sign in</button>
+      </form>
+
+      <form id="registerForm" class="stack" hidden>
+        <label class="f">
+          <span>Full name</span>
+          <input name="full_name" autocomplete="name" placeholder="Your full name" required maxlength="120">
+        </label>
+        <label class="f">
+          <span>Email address</span>
+          <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        </label>
+        <label class="f">
+          <span>Password</span>
+          <input name="password" type="password" autocomplete="new-password" placeholder="Min 8 chars, with a letter and number" minlength="8" maxlength="72" required>
+        </label>
+        <div class="row2">
+          <label class="f">
+            <span>Monthly income (₹)</span>
+            <input name="net_monthly_income" type="number" min="0" step="0.01" placeholder="0">
+          </label>
+          <label class="f">
+            <span>Savings goal (₹/mo)</span>
+            <input name="target_savings" type="number" min="0" step="0.01" placeholder="0">
+          </label>
+        </div>
+        <p class="err" id="registerErr" role="alert"></p>
+        <button class="btn btn-full" type="submit">Create account</button>
+      </form>
+    </section>
+  </div>
+</main>
+
+<!-- MAIN APP -->
+<div id="app" class="app" hidden>
+  <aside class="side" id="sidebar">
+    <div class="side-top">
+      <img class="side-logo" src="/assets/logo.png" alt="Spend Wise">
+      <span class="side-brand">Spend Wise</span>
+    </div>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#/dashboard" data-route="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Dashboard</span>
+      </a>
+      <a href="#/transactions" data-route="transactions">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+        <span>Transactions</span>
+      </a>
+      <a href="#/portfolio" data-route="portfolio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        <span>Spend Portfolio</span>
+      </a>
+      <a href="#/predictions" data-route="predictions">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>Forecast</span>
+      </a>
+      <a href="#/cards" data-route="cards">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <span>Credit Cards</span>
+      </a>
+      <a href="#/profile" data-route="profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Profile</span>
+      </a>
+    </nav>
+    <div class="side-bottom">
+      <div class="side-user-info">
+        <div class="side-avatar" id="sideAvatar">U</div>
+        <div class="side-user-text">
+          <div class="side-user-name" id="sideUserName">User</div>
+          <div class="side-user-email" id="sideUser">user@email.com</div>
+        </div>
+      </div>
+      <button type="button" class="signout" data-action="logout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sign out
+      </button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="topbar-left">
+        <h1 id="title" class="page-title"></h1>
+        <p id="pageSubtitle" class="page-subtitle"></p>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-chip" id="userChip"></div>
+      </div>
+    </header>
+    <section id="view" aria-live="polite" class="view-area"></section>
+  </main>
+</div>
+
+<!-- MODAL -->
+<dialog id="modal">
+  <form id="modalForm" class="modal-inner stack">
+    <div class="modal-head">
+      <h2 id="modalTitle"></h2>
+      <button type="button" class="modal-close" data-action="close-modal" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div id="modalBody" class="stack"></div>
+    <p class="err" id="modalErr" role="alert"></p>
+    <div class="actions">
+      <button type="button" class="btn ghost" data-action="close-modal">Cancel</button>
+      <button type="submit" class="btn" id="modalSubmit">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<div id="sideOverlay" class="side-overlay"></div>
+<div id="toast" role="status" aria-live="polite"></div>
