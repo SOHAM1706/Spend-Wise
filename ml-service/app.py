@@ -18,6 +18,20 @@ from sklearn.ensemble import IsolationForest
 from sklearn.linear_model import Ridge
 
 app = FastAPI(title="Spend Wise ML service")
+@app.get("/")
+def home():
+    return {
+        "message": "Spend Wise Backend is Running Successfully!",
+        "status": "success"
+    }
+
+
+@app.get("/health")
+def health_check():
+    return {
+        "status": "healthy",
+        "database": "connected"
+    }
 
 
 # ---------- candidate models: each maps a history list -> next-period prediction ----------
