@@ -33,8 +33,16 @@ if (origins.length) app.use(cors({ origin: origins }));
 app.use(express.json({ limit: '100kb' }));
 
 app.get('/api/health', async (req, res) => {
-  try { await pool.query('SELECT 1'); res.json({ status: 'ok' }); }
-  catch { res.status(503).json({ status: 'database unavailable' }); }
+  try {
+    await pool.query('SELECT 1');
+    res.json({ status: 'ok' });
+  } catch (err) {
+    console.error('Database health check failed:', err.message);
+
+    res.status(503).json({
+      status: 'database unavailable'
+    });
+  }
 });
 
 app.use('/api/auth', rateLimit({ windowMs: 15 * 60 * 1000, limit: 60, standardHeaders: true, legacyHeaders: false }),
