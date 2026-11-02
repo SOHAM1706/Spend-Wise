@@ -5,6 +5,7 @@
     {
       "source": "/api/:path*",
       "destination": "https://spend-wise-1-1um4.onrender.com/api/:path*"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
