@@ -2,17 +2,7 @@
 const mysql = require('mysql2/promise');
 const fs = require('fs');
 
-let sslCa;
-
-if (process.env.DB_SSL_CA_PATH) {
-  sslCa = fs.readFileSync(process.env.DB_SSL_CA_PATH, 'utf8');
-} else if (process.env.DB_SSL_CA) {
-  sslCa = process.env.DB_SSL_CA.replace(/\\n/g, '\n');
-}
-
-if (!sslCa) {
-  throw new Error('Aiven SSL certificate is missing');
-}
+const ca = fs.readFileSync('/etc/secrets/ca.pem', 'utf8');
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -22,7 +12,7 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
 
   ssl: {
-    ca: sslCa,
+    ca: ca,
     rejectUnauthorized: true
   },
 
